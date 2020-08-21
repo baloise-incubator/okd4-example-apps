@@ -1,6 +1,11 @@
-# OKD4 Example Apps - Deployment Configuration
+# Baloise CodeCamp 2020 | Team REST
+*OKD4 Apps - Deployment Configuration*
 
-[![App Status](https://argocd.baloise.dev/api/badge?name=okd4-example-apps-apps)](https://argocd.apps.okd.baloise.dev/applications/okd4-example-apps-apps)
+OpenShift deployment configuration, deployed in the [Baloise Incubator](https://github.com/baloise-incubator) [OKD 4](https://www.okd.io/) cluster. The configuration is synced by [Argo CD](https://argoproj.github.io/projects/argo-cd).
+
+|namespace|status
+|-|-|
+|tbd|[![App Status](https://argocd.baloise.dev/api/badge?name=tbd)](https://argocd.baloise.dev/applications/tbd)|
 
 ## Setup
 In order to work, this repository needs to be referenced in the corresponding team's root configuration yaml in the [okd34-apps-root-config](https://github.com/baloise-incubator/okd4-apps-root-config) repository.
