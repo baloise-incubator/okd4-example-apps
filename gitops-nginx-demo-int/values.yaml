@@ -6,3 +6,4 @@ app:
     http:
       ingress:
         host: gitops-demo-int.baloise.dev
+
