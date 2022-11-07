@@ -1,0 +1,5 @@
+applications:
+  generic:
+    placeholder: notinuse 
+  gitops-nginx-demo-test:
+    test-code: "mod-by-gitopscli-5.4.2-rc1"
