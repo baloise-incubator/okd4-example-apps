@@ -8,7 +8,7 @@ forward-proxy:
         host: forward-proxy-test.apps.okd.baloise.dev
   volumeMounts:
     - name: mnt
-      mountPath: /opt/bitnami/nginx/conf/server_blocks/
+      mountPath: /opt/bitnami/nginx/conf/server_blocks/my-server-block.conf
       subPath: my-server-block.conf
   volumes:
     - name: mnt
