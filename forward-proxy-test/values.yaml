@@ -1,0 +1,8 @@
+baloise-design-system-docs:
+  image:
+    repository: bitnami/nginx
+    tag: latest
+  network:
+    http:
+      ingress:
+        host: forward-proxy-test.apps.okd.baloise.dev
