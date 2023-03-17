@@ -1,4 +1,4 @@
-baloise-design-system-docs:
+forward-proxy:
   image:
     repository: bitnami/nginx
     tag: latest
