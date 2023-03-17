@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forward-proxy-server-block
+  namespace: forward-proxy-test
+data:
+  server-block.conf: |-
+    server {
+        listen 8888;
+        location / {
+            resolver 8.8.8.8;
+            proxy_pass http://$http_host$uri$is_args$args;
+        }
+    }
