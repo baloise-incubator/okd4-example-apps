@@ -4,7 +4,7 @@ metadata:
   name: forward-proxy-server-block
   namespace: forward-proxy-test
 data:
-  server-block.conf: |-
+  my-server-block.conf: |-
     server {
         listen 8888;
         location / {

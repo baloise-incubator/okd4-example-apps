@@ -6,3 +6,11 @@ forward-proxy:
     http:
       ingress:
         host: forward-proxy-test.apps.okd.baloise.dev
+  volumeMounts:
+    - name: mnt
+      mountPath: /opt/bitnami/nginx/conf/server_blocks/
+      subPath: my-server-block.conf
+  volumes:
+    - name: mnt
+      configMap:
+        name: forward-proxy-server-block
