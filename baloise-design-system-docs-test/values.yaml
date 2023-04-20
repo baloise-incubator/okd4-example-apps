@@ -5,4 +5,5 @@ baloise-design-system-docs:
   network:
     http:
       ingress:
-        host: design.baloise.dev
+        # host: design.baloise.dev
+        host: design-system.apps.okd.baloise.dev
