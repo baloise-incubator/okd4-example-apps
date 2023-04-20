@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}
 spec:
   endpoints:
-    - dnsName: {{ .Values.baloise-design-system-docs.network.http.ingress.host }}
+    - dnsName: {{ .Values.designsystem.network.http.ingress.host }}
       recordType: A
       recordTTL: 180
       targets: [""]
