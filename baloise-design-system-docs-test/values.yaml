@@ -1,4 +1,4 @@
-baloise-design-system-docs:
+designsystem:
   image:
     repository: baloise/design-system-docs
     tag: 532a554
