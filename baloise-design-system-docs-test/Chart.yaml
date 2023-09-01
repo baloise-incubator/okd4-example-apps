@@ -2,7 +2,7 @@ apiVersion: v2
 version: 1.0.0
 name: baloise-design-system-docs-test
 dependencies:
-  - name: generic-chart
-    version: 2.1.0
-    repository: https://registry.baloise.dev/chartrepo/library
+  - name:  generic-chart
+    version: 2.3.0
+    repository: https://baloise-incubator.github.io/generic-chart/
     alias: designsystem
