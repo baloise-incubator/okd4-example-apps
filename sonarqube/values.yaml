@@ -1,0 +1,4 @@
+sonarqube:
+  OpenShift:
+    enabled: false
+    createSCC: true
