@@ -5,4 +5,4 @@ designsystem:
   network:
     http:
       ingress:
-        host: design.baloise.dev
+        host: design-legacy.baloise.dev
