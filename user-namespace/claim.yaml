@@ -1,8 +1,8 @@
-#apiVersion: databases.platform.baloise.app/v1alpha1
-#kind: PostgreSQLServerClaim
-#metadata:
-#  name: leitungs-workshop-demo-psql
-#spec:
-#  location: Germany West Central
+apiVersion: databases.platform.baloise.app/v1alpha1
+kind: PostgreSQLServerClaim
+metadata:
+  name: leitungs-workshop-demo-psql
+spec:
+  location: Germany West Central
   # version: 16 (default)
   # storage: 32768 (default)
