@@ -1,6 +1,0 @@
-apiVersion: databases.platform.baloise.app/v1alpha1
-kind: PostgreSQLServerClaim
-metadata:
-  name: demo-psql-workshop4
-spec:
-  location: Germany West Central
