@@ -1,0 +1,20 @@
+dummy-test-backend:
+  image:
+    repository: docker.io/raffaelheinzer248/blabla-spotify-backend
+    tag: latest
+  network:
+    http:
+      containerPort: 8080
+      ingress:
+        host: dummy-test.apps.baloise.dev
+        path: /api
+  env:
+    - name: SRF_CONSUMER_KEY
+      value: empty
+    - name: SRF_CONSUMER_SECRET
+      value: empty
+    - name: SPOTIFY_CLIENT_ID
+      value: empty
+    - name: SPOTIFY_CLIENT_SECRET
+      value: empty
+
