@@ -9,5 +9,6 @@ spec:
         - namespaceSelector:
             matchLabels:
               name: grafana-tempo-test
+              kubernetes.io/metadata.name: grafana-tempo-test
   policyTypes:
     - Ingress
