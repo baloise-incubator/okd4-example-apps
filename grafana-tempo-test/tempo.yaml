@@ -13,7 +13,25 @@ spec:
       limits:
         memory: 2Gi
         cpu: '2'
+  extraConfig:
+    tempo:
+      compactor:
+        compaction:
+          # -- Duration to keep blocks
+          block_retention: 672h # 4 weeks
+
   template:
+
     queryFrontend:
       jaegerQuery:
         enabled: true
+
+    compactor:
+      resources:
+        limits:
+          cpu: 3
+          memory: 4Gi
+        requests:
+          cpu: 100m
+          memory: 2Gi
+
