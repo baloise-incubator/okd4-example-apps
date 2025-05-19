@@ -2,6 +2,8 @@ kind: Tenant
 apiVersion: minio.min.io/v2
 metadata:
   name: grafana-tempo-minio-test
+  labels:
+    app: minio
 spec:
   certConfig: {}
   configuration:
