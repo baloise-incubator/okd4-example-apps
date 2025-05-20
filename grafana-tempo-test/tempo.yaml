@@ -13,8 +13,12 @@ spec:
       limits:
         memory: 2Gi
         cpu: '2'
+
   extraConfig:
     tempo:
+      server:
+        grpc_server_max_recv_msg_size: 52430000 # 50 MiB
+        grpc_server_max_send_msg_size: 52430000 # 50 MiB
       compactor:
         compaction:
           # -- Duration to keep blocks
@@ -37,3 +41,11 @@ spec:
 
     ingester:
       replicas: 3
+
+    querier:
+      frontend_worker:
+        grpc_client_config:
+          # Sets the maximum gRPC message size that the querier accepts.
+          max_send_msg_size: 52430000 # 50 MiB
+      trace_by_id:
+        query_timeout: 10s
