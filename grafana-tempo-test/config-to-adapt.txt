@@ -1,0 +1,110 @@
+otel:
+  route:
+    enabled: true
+    host: grafana-tempo-test-collector.apps.caasi01.balgroupit.com
+    tls:
+      termination: passthrough
+      insecureEdgeTerminationPolicy: Redirect
+
+tempo:
+  reportingEnabled: false
+
+  server:
+    grpc_server_max_recv_msg_size: 52430000 # 50 MiB
+    grpc_server_max_send_msg_size: 52430000 # 50 MiB
+
+  global:
+    image:
+      # -- Overrides the Docker registry globally for all images.
+      registry: jfrog.balgroupit.com
+      pullSecrets: [ pull-secret-jfrog.balgroupit.com ]
+  global_overrides:
+    metrics_generator_processors: [service-graphs, span-metrics, local-blocks]
+    max_traces_per_user: 100000
+
+  storage:
+    trace:
+      backend: azure
+      azure:
+        container_name: grafana-tempo-test
+        storage_account_name: balgrpstprodautoqacompli
+        storage_account_key: ${STORAGE_ACCOUNT_ACCESS_KEY}
+
+  tempo:
+    image:
+      repository: git-platform-docker/tempo
+      tag: 2.6.1
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1004730001
+      runAsGroup: 1004730001
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+    podSecurityContext:
+      fsGroup: null
+    podAnnotations:
+      secret.reloader.stakater.com/auto: "true"
+
+  memcached:
+    enabled: true
+    image:
+      repository: git-platform-docker/memcached
+      tag: 1.6.32
+
+  metaMonitoring:
+    serviceMonitor:
+      enabled: true
+      labels:
+        team: auto-qa-compl
+
+  traces:
+    otlp:
+      http:
+        enabled: true
+      grpc:
+        enabled: true
+        receiverConfig:
+          # Sets the maximum gRPC message size that receivers of Grafana Tempo accept.
+          max_recv_msg_size_mib: 50
+
+  metricsGenerator:
+    resources:
+      limits:
+        cpu: 1
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 1Gi
+    extraVolumes:
+      - name: injected-cabundle
+        configMap:
+          name: injected-cabundle
+    extraVolumeMounts:
+      - name: injected-cabundle
+        mountPath: /tls
+        readOnly: true
+    enabled: true
+    config:
+      storage:
+        remote_write_flush_deadline: 20s
+        remote_write:
+          - name: prometheus-stack
+            url: "https://prometheus-remote-write.auto-qa-compl-monitoring.svc:9094/api/v1/write"
+            send_exemplars: true
+            tls_config:
+              ca_file: /tls/service-ca.crt
+      processor:
+        span_metrics:
+          dimensions: ["environment"]
+
+  querier:
+    config:
+      frontend_worker:
+        grpc_client_config:
+          # Sets the maximum gRPC message size that the querier accepts.
+          max_send_msg_size: 52430000 # 50 MiB
+      trace_by_id:
+        query_timeout: 10s
