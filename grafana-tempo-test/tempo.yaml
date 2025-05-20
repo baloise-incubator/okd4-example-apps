@@ -5,8 +5,8 @@ metadata:
 spec:
   storage:
     secret:
-      name: grafana-tempo-minio-test
-      type: s3
+      name: grafana-tempo-manual-azure-test
+      type: azure
   storageSize: 1Gi
   resources:
     total:
