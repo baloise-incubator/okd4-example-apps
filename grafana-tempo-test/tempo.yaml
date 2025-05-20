@@ -23,12 +23,42 @@ spec:
         compaction:
           # -- Duration to keep blocks
           block_retention: 672h # 4 weeks
+          # Duration to keep blocks that have been compacted elsewhere
+          compacted_block_retention: 1h
+          # -- Blocks in this time window will be compacted together
+          compaction_window: 1h
+          # -- Amount of data to buffer from input blocks
+          v2_in_buffer_bytes: 5242880
+          # -- Flush data to backend when buffer is this large
+          v2_out_buffer_bytes: 20971520
+          # -- Maximum number of traces in a compacted block. WARNING: Deprecated. Use max_block_bytes instead.
+          max_compaction_objects: 6000000
+          # -- Maximum size of a compacted block in bytes
+          max_block_bytes: 107374182400
+          # -- Number of tenants to process in parallel during retention
+          retention_concurrency: 10
+          # -- Number of traces to buffer in memory during compaction
+          v2_prefetch_traces_count: 1000
+          # -- The maximum amount of time to spend compacting a single tenant before moving to the next
+          max_time_per_tenant: 5m
+          # -- The time between compaction cycles
+          compaction_cycle: 120s
 
   template:
 
     queryFrontend:
       jaegerQuery:
         enabled: true
+
+    distributor:
+      component:
+        resources:
+          limits:
+            cpu: '1'
+            memory: 2Gi
+          requests:
+            cpu: 100m
+            memory: 1Gi
 
     compactor:
       resources:
@@ -41,11 +71,19 @@ spec:
 
     ingester:
       replicas: 3
+      resources:
+        limits:
+          cpu: 2000m
+          memory: 4Gi
+        requests:
+          cpu: 100m
+          memory: 2Gi
 
     querier:
-      frontend_worker:
-        grpc_client_config:
-          # Sets the maximum gRPC message size that the querier accepts.
-          max_send_msg_size: 52430000 # 50 MiB
-      trace_by_id:
-        query_timeout: 10s
+      resources:
+        limits:
+          cpu: '2'
+          memory: 4Gi
+        requests:
+          cpu: 100m
+          memory: 2Gi
