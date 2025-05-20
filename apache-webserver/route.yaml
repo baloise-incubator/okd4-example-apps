@@ -8,3 +8,5 @@ spec:
     name: webserver-service
   port:
     targetPort: 80
+  tls:
+    termination: edge
