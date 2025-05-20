@@ -1,11 +1,3 @@
-otel:
-  route:
-    enabled: true
-    host: grafana-tempo-test-collector.apps.caasi01.balgroupit.com
-    tls:
-      termination: passthrough
-      insecureEdgeTerminationPolicy: Redirect
-
 tempo:
   reportingEnabled: false
 
