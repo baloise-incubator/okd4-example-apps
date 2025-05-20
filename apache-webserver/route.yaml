@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: webserver.route
+spec:
+  to:
+    kind: Service
+    name: webserver-service
+  port:
+    targetPort: 80
