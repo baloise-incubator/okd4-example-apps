@@ -5,7 +5,7 @@ metadata:
 spec:
   storage:
     secret:
-      name: grafana-tempo-minio-test
+      name: grafana-tempo-azure-test
       type: azure
   storageSize: 1Gi
   resources:
