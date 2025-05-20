@@ -43,6 +43,13 @@ spec:
           max_time_per_tenant: 5m
           # -- The time between compaction cycles
           compaction_cycle: 120s
+      querier:
+        frontend_worker:
+          grpc_client_config:
+            # Sets the maximum gRPC message size that the querier accepts.
+            max_send_msg_size: 52430000 # 50 MiB
+        trace_by_id:
+          query_timeout: 10s
 
 
 
