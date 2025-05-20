@@ -99,12 +99,3 @@ tempo:
       processor:
         span_metrics:
           dimensions: ["environment"]
-
-  querier:
-    config:
-      frontend_worker:
-        grpc_client_config:
-          # Sets the maximum gRPC message size that the querier accepts.
-          max_send_msg_size: 52430000 # 50 MiB
-      trace_by_id:
-        query_timeout: 10s
