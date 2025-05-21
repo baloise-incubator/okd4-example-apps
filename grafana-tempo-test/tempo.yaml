@@ -16,6 +16,10 @@ spec:
 
   extraConfig:
     tempo:
+      overrides:
+        defaults:
+          ingestion:
+            max_traces_per_user: 100000
       server:
         grpc_server_max_recv_msg_size: 52430000 # 50 MiB
         grpc_server_max_send_msg_size: 52430000 # 50 MiB
