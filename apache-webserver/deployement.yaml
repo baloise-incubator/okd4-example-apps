@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: apache-container
-          image: ghcr.io/kacper08480/docker-apache-webserver:latest
+          image: ghcr.io/kacper08480/docker-apache-webserver:port8080
           ports:
             - containerPort: 8080
           VolumeMounts:
