@@ -17,7 +17,7 @@ spec:
           image: ghcr.io/kacper08480/docker-apache-webserver:port8080
           ports:
             - containerPort: 8080
-          VolumeMounts:
+          volumeMounts:
             - name: app-config
               mountPath: /usr/local/apache2/conf/httpd.conf
               subPath: httpd.conf
