@@ -17,3 +17,9 @@ spec:
           image: ghcr.io/kacper08480/docker-apache-webserver:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: APP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: APP_PORT
