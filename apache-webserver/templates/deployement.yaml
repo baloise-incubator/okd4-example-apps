@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: apache-webserver
 spec:
-  replicas: {{ .values.deployement.replicas }}
+  replicas: {{ .Values.deployement.replicas }}
   selector:
     matchLabels:
       app: apache
@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: apache-container
-          image: {{ .values.deployement.image }}
+          image: {{ .Values.deployement.image }}
           ports:
-            - containerPort: {{ .values.deployement.containerPort }}
+            - containerPort: {{ .Values.deployement.containerPort }}
           volumeMounts:
             - name: app-config
               mountPath: /usr/local/apache2/conf/httpd.conf
