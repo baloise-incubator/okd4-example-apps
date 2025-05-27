@@ -12,7 +12,7 @@ spec:
       labels:
         app: apache
     spec:
-      containers:
+     containers:
         - name: apache-container
           image: ghcr.io/kacper08480/docker-apache-webserver:port8080
           ports:
@@ -21,7 +21,12 @@ spec:
             - name: app-config
               mountPath: /usr/local/apache2/conf/httpd.conf
               subPath: httpd.conf
+            - name: pid
+              mountPath: /usr/local/apache2/logs
       volumes:
         - name: app-config
           configMap:
             name: app-config
+        - name: pid
+          emptyDir: {}
+
