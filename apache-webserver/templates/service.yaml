@@ -7,6 +7,6 @@ spec:
     app: apache
   ports:
     - protocol: TCP
-      port: {{ .values.service.port }}
+      port: {{ .Values.service.port }}
       targetPort: {{ .values.service.targetPort }}
   type: ClusterIP
