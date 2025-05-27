@@ -23,7 +23,7 @@ spec:
              subPath: httpd.conf
            - name: pid
              mountPath: /usr/local/apache2/logs
-     volumes:
+                  volumes:
        - name: app-config
          configMap:
            name: app-config
