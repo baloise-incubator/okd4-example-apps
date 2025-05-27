@@ -7,6 +7,6 @@ spec:
     kind: Service
     name: webserver-service
   port:
-    targetPort: 8080
+    targetPort: {{.values.route.targetPort}}
   tls:
     termination: edge
