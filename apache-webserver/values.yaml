@@ -1,4 +1,4 @@
-deployement:
+deployment:
   replicas: 2
   image: ghcr.io/kacper08480/docker-apache-webserver:port8080
   containerPort: 8080
