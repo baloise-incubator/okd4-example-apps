@@ -13,9 +13,9 @@ spec:
         app: wordpress
     spec:
       securityContext:
-        runAsUser: 33         
-        runAsGroup: 33
-        fsGroup: 33
+        runAsUser: 1001380001
+        runAsGroup: 1001380001
+        fsGroup: 1001380001
         runAsNonRoot: true
       containers:
         - name: wordpress
