@@ -12,11 +12,6 @@ spec:
       labels:
         app: wordpress
     spec:
-      securityContext:
-        runAsUser: 1001380001
-        runAsGroup: 1001380001
-        fsGroup: 1001380001
-        runAsNonRoot: true
       containers:
         - name: wordpress
           image: ghcr.io/kacper08480/wordpress-3:latest
@@ -39,6 +34,10 @@ spec:
               mountPath: /usr/local/apache2/logs
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            readOnlyRootFilesystem: false
           readinessProbe:
             httpGet:
               path: /
