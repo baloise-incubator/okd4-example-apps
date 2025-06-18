@@ -27,7 +27,7 @@ spec:
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: mysql-data
+            - name: database-data
               mountPath: /var/lib/mysql
       volumes:
         - name: database-data
