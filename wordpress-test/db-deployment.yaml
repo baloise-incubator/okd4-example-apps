@@ -21,9 +21,9 @@ spec:
             - name: MYSQL_USER
               value: kacper
             - name: MYSQL_PASSWORD
-              value: 123
+              value: "123"
             - name: MYSQL_ROOT_PASSWORD
-              value: 123
+              value: "123"
           ports:
             - containerPort: 3306
           volumeMounts:
