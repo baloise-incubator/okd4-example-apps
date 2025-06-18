@@ -27,15 +27,19 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               value: "123"
           volumeMounts:
+            - name: app-config
+              mountPath: /usr/local/apache2/conf/httpd.conf
+              subPath: httpd.conf
+            - name: pid
+              mountPath: /usr/local/apache2/logs
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
-            - name: apache-config
-              mountPath: /etc/apache2/httpd.conf
-              subPath: httpd.conf
       volumes:
+        - name: app-config
+          configMap:
+            name: app-config
+        - name: pid
+          emptyDir: {}
         - name: wordpress-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
-        - name: apache-config
-          configMap:
-            name: app-config
