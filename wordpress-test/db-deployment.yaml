@@ -12,6 +12,8 @@ spec:
       labels:
         app: database
     spec:
+      securityContext:
+        fsGroup: 999
       containers:
         - name: database        
           image: ghcr.io/kacper08480/mysql:latest
