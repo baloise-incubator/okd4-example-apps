@@ -12,11 +12,16 @@ spec:
       labels:
         app: wordpress
     spec:
+      securityContext:
+        runAsUser: 33           # www-data
+        runAsGroup: 33
+        fsGroup: 33
+        runAsNonRoot: true
       containers:
         - name: wordpress
           image: ghcr.io/kacper08480/wordpress-2:latest
           ports:
-            - containerPort: 8080         
+            - containerPort: 8080
           env:
             - name: WORDPRESS_DB_HOST
               value: db-service:3306
@@ -34,6 +39,12 @@ spec:
               mountPath: /usr/local/apache2/logs
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
       volumes:
         - name: app-config
           configMap:
