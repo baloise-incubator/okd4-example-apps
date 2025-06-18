@@ -13,13 +13,13 @@ spec:
         app: wordpress
     spec:
       securityContext:
-        runAsUser: 33           # www-data
+        runAsUser: 33         
         runAsGroup: 33
         fsGroup: 33
         runAsNonRoot: true
       containers:
         - name: wordpress
-          image: ghcr.io/kacper08480/wordpress-2:latest
+          image: ghcr.io/kacper08480/wordpress-3:latest
           ports:
             - containerPort: 8080
           env:
