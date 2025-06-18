@@ -16,7 +16,7 @@ spec:
         - name: wordpress
           image: ghcr.io/kacper08480/wordpress:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080          # hier Port anpassen
           env:
             - name: WORDPRESS_DB_HOST
               value: db-service:3306
