@@ -29,7 +29,13 @@ spec:
           volumeMounts:
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
+            - name: apache-config
+              mountPath: /etc/apache2/httpd.conf
+              subPath: httpd.conf
       volumes:
         - name: wordpress-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
+        - name: apache-config
+          configMap:
+            name: app-config
