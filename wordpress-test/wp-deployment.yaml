@@ -17,7 +17,7 @@ spec:
         allowPrivilegeEscalation: false
       containers:
         - name: wordpress
-          image: wordpress:6.5-apache
+          image: image: bitnami/wordpress:6.5.4-debian-11-rXX
           ports:
             - containerPort: 80
           env:
