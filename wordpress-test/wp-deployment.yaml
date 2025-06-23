@@ -12,9 +12,12 @@ spec:
       labels:
         app: wordpress
     spec:
+      securityContext:
+        runAsUser: 0    
+        fsGroup: 0      
       containers:
         - name: wordpress
-          image: wordpress:latest
+          image: wordpress:latest  
           ports:
             - containerPort: 8080
           env:
@@ -33,3 +36,9 @@ spec:
         - name: wordpress-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 10
+        periodSeconds: 5
