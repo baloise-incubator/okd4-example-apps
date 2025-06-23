@@ -16,7 +16,7 @@ spec:
         fsGroup: 999
       containers:
         - name: database        
-          image: ghcr.io/kacper08480/mysql-2:latest
+          image: ghcr.io/kacper08480/mysql-3:latest
           env:
             - name: MYSQL_DATABASE
               value: wordpress
