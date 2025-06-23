@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: ghcr.io/kacper08480/wordpress-4:latest
+          image: registry.redhat.io/rhel7/wordpress-36
           ports:
             - containerPort: 8080
           env:
