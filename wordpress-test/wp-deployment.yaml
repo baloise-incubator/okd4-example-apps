@@ -12,6 +12,9 @@ spec:
       labels:
         app: wordpress
     spec:
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
       containers:
         - name: wordpress
           image: wordpress:6.5-apache
@@ -27,23 +30,13 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               value: "123"
           volumeMounts:
-            - name: app-config
-              mountPath: /usr/local/apache2/conf/httpd.conf
-              subPath: httpd.conf
-            - name: pid
-              mountPath: /usr/local/apache2/logs
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            readOnlyRootFilesystem: false
+            - name: tmp
+              mountPath: /tmp
       volumes:
-        - name: app-config
-          configMap:
-            name: app-config
-        - name: pid
-          emptyDir: {}
         - name: wordpress-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
+        - name: tmp
+          emptyDir: {}
