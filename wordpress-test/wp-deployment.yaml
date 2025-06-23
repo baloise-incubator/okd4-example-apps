@@ -12,14 +12,11 @@ spec:
       labels:
         app: wordpress
     spec:
-      securityContext:
-        runAsUser: 0    
-        fsGroup: 0      
       containers:
         - name: wordpress
-          image: wordpress:latest  
+          image: wordpress:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           env:
             - name: WORDPRESS_DB_HOST
               value: db-service:3306
@@ -30,15 +27,23 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               value: "123"
           volumeMounts:
+            - name: app-config
+              mountPath: /usr/local/apache2/conf/httpd.conf
+              subPath: httpd.conf
+            - name: pid
+              mountPath: /usr/local/apache2/logs
             - name: wordpress-storage
               mountPath: /var/www/html/wp-content
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            readOnlyRootFilesystem: false
       volumes:
+        - name: app-config
+          configMap:
+            name: app-config
+        - name: pid
+          emptyDir: {}
         - name: wordpress-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
-      readinessProbe:
-        httpGet:
-          path: /
-          port: 80
-        initialDelaySeconds: 10
-        periodSeconds: 5
