@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: registry.redhat.io/rhel7/wordpress-36
+          image: wordpress:latest
           ports:
             - containerPort: 8080
           env:
