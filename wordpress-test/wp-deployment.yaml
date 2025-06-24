@@ -31,7 +31,7 @@ spec:
               value: "123"
           volumeMounts:
             - name: wordpress-storage
-              mountPath: /bitnami/wordpress/wp-content
+              mountPath: /bitnami/wordpress
             - name: tmp
               mountPath: /tmp
       volumes:
