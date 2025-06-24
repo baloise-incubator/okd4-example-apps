@@ -13,8 +13,10 @@ spec:
         app: database
     spec:
       containers:
-        - name: database        
+        - name: database
           image: registry.redhat.io/rhel8/mariadb-105
+          ports:
+            - containerPort: 3306
           env:
             - name: MYSQL_DATABASE
               value: wordpress
@@ -24,8 +26,6 @@ spec:
               value: "123"
             - name: MYSQL_ROOT_PASSWORD
               value: "123"
-          ports:
-            - containerPort: 3306
           volumeMounts:
             - name: database-data
               mountPath: /var/lib/mysql
