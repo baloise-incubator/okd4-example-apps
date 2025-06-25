@@ -7,7 +7,7 @@ spec:
     app: database
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
+      port: {{ .Values.service.db-port }}
+      targetPort: {{ .Values.service.db-targetPort }}
   type: ClusterIP
 
