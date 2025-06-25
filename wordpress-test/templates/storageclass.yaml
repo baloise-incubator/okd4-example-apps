@@ -1,7 +1,7 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: wp-storage
-provisioner: kubernetes.io/portworx-volume
+  name: {{ .Values.storage.storage }}
+provisioner: {{ .Values.storage.provisioner }}
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
