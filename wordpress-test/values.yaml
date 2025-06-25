@@ -4,10 +4,10 @@ wordpress:
   containerPort: 8080
   pvcname: 'wordpress-pvc'
 service:
-  wp-targetPort: 8080
-  wp-port: 8080
-  db-targetPort: 3306
-  db-port: 3306
+  wptargetPort: 8080
+  wpport: 8080
+  dbtargetPort: 3306
+  dbport: 3306
 database:
   replicas: 1
   image: ghcr.io/kacper08480/mysql-4:latest
