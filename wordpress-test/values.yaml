@@ -10,7 +10,7 @@ service:
   dbport: 3306
 database:
   replicas: 1
-  image: ghcr.io/kacper08480/mysql-4:latest
+  image: ghcr.io/kacper08480/mysql-5:latest
   containerPort: 3306
   pvcname: 'database-pvc'
 storage:
