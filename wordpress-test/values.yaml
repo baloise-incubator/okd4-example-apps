@@ -7,8 +7,9 @@ service:
   port: 8080
 database:
   replicas: 1
-  image:
-  port: 8080
+  image: ghcr.io/kacper08480/mysql-4:latest
+  containerPort: 3306
+  pvcname: 'database-pvc'
 storage:
   storagename: 'wp-storage'
   storage: 5gi
