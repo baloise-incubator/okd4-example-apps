@@ -7,5 +7,5 @@ spec:
     kind: Service
     name: wordpress-service
   port:
-    targetPort: 80
+    targetPort: 8080
 
