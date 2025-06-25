@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: database
-          image: registry.redhat.io/rhel8/mariadb-105
+          image: ghcr.io/kacper08480/mysql-4:latest
           ports:
             - containerPort: 3306
           env:
