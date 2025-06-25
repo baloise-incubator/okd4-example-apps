@@ -5,7 +5,7 @@ wordpress:
 service:
   targetPort: 8080
   port: 8080
-datenbank:
+database:
   replicas: 1
   image:
   port: 8080
