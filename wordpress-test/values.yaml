@@ -1,0 +1,15 @@
+wordpress:
+  replicas: 1
+  image:
+  port: 8080
+service:
+  targetPort: 8080
+  port: 8080
+datenbank:
+  replicas: 1
+  image:
+  port: 8080
+storage:
+  storagename: 'wp-storage'
+  storage: 5gi
+  provisioner: kubernetes.io/portworx-volume
