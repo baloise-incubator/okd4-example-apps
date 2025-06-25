@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: wordpress
 spec:
-  replicas: 1
+  replicas: {{ .Values.wordpress.replicas }}
   selector:
     matchLabels:
       app: wordpress
@@ -12,14 +12,11 @@ spec:
       labels:
         app: wordpress
     spec:
-      securityContext:
-        runAsNonRoot: true
-        allowPrivilegeEscalation: false
       containers:
         - name: wordpress
-          image: bitnami/wordpress:6.8.1-debian-12-r5
+          image: {{ .Values.wordpress.image }}
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.wordpress.containerPort }}
           env:
             - name: WORDPRESS_DATABASE_NAME
               value: wordpress
@@ -37,6 +34,6 @@ spec:
       volumes:
         - name: wordpress-storage
           persistentVolumeClaim:
-            claimName: wordpress-pvc
+            claimName: {{ .Values.wordpress.pvcname }}
         - name: tmp
           emptyDir: {}
