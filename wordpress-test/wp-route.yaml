@@ -8,4 +8,6 @@ spec:
     name: wordpress-service
   port:
     targetPort: 8080
+  tls:
+    termination: edge
 
