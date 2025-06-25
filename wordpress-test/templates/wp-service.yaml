@@ -7,6 +7,6 @@ spec:
     app: wordpress
   ports:
     - protocol: TCP
-      port: {{ .Values.service.wp-port }}
-      targetPort: {{ .Values.service.wp-targetport }}
+      port: {{ .Values.service.wpport }}
+      targetPort: {{ .Values.service.wptargetport }}
   type: ClusterIP
