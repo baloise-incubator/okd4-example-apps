@@ -7,7 +7,7 @@ spec:
     app: database
   ports:
     - protocol: TCP
-      port: {{ .Values.service.db-port }}
-      targetPort: {{ .Values.service.db-targetPort }}
+      port: {{ .Values.service.dbport }}
+      targetPort: {{ .Values.service.dbtargetPort }}
   type: ClusterIP
 
