@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: database
-          image: ghcr.io/kacper08480/mysql-4:latest
+          image: {{ .Values.database.image }}
           ports:
             - containerPort: 3306
           env:
