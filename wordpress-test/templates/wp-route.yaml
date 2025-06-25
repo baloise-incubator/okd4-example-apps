@@ -7,7 +7,7 @@ spec:
     kind: Service
     name: wordpress-service
   port:
-    targetPort: 8080
+    targetPort: {{ .Values.route.targetPort }}
   tls:
     termination: edge
 
