@@ -15,7 +15,7 @@ database:
   pvcname: 'database-pvc'
 storage:
   storagename: 'wp-storage'
-  storage: 5gi
+  storage: 5Gi
   provisioner: kubernetes.io/portworx-volume
 route:
   targetPort: 8080
