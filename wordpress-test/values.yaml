@@ -1,10 +1,13 @@
 wordpress:
   replicas: 1
-  image:
-  port: 8080
+  image: bitnami/wordpress:6.8.1-debian-12-r5
+  containerPort: 8080
+  pvcname: 'wordpress-pvc'
 service:
-  targetPort: 8080
-  port: 8080
+  wp-targetPort: 8080
+  wp-port: 8080
+  db-targetPort: 3306
+  db-port: 3306
 database:
   replicas: 1
   image: ghcr.io/kacper08480/mysql-4:latest
@@ -14,3 +17,5 @@ storage:
   storagename: 'wp-storage'
   storage: 5gi
   provisioner: kubernetes.io/portworx-volume
+route:
+  targetPort: 8080
