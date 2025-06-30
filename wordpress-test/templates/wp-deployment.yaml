@@ -25,7 +25,7 @@ spec:
             - name: WORDPRESS_DATABASE_PASSWORD
               value: "123"
             - name: WORDPRESS_DATABASE_HOST
-              value: database
+              value: db-service
           volumeMounts:
             - name: wordpress-storage
               mountPath: /bitnami/wordpress
