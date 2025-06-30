@@ -19,25 +19,13 @@ spec:
             - containerPort: {{ .Values.database.containerPort }}
           env:
             - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: MYSQL_DATABASE
+              values: wordpress
             - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: MYSQL_USER
+              values: kacper
             - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: MYSQL_PASSWORD
+              values: "123"
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: MYSQL_ROOT_PASSWORD
+              values: "123"
           volumeMounts:
             - name: database-data
               mountPath: /var/lib/mysql
