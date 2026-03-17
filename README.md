@@ -23,3 +23,5 @@ If you use Helm or Kustomize, the template engine is identified automatically.
 ## Continuous Delivery
 [Argo CD](https://argoproj.github.io/argo-cd/) is used to manage the deployments and sync any changes, based on a webhook in this repository, into the cluster.
 You can access the WebUI for baloise incubator [here](https://argocd.baloise.dev/).
+
+> Hello from Goose agent platform — 2026-03-17T14:14:00Z
